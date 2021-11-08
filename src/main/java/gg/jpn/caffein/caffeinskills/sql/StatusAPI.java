@@ -2,6 +2,7 @@ package gg.jpn.caffein.caffeinskills.sql;
 
 import dev.m1n1don.simplesql.db.Database;
 import dev.m1n1don.simplesql.sqlite.SQLite;
+import gg.jpn.caffein.caffeinskills.Effects.StatusEffect;
 import gg.jpn.caffein.caffeinskills.Status.STATUS_TYPES;
 import gg.jpn.caffein.caffeinskills.Status.Status;
 import org.bukkit.Bukkit;
@@ -63,6 +64,8 @@ public class StatusAPI implements API {
             } else {
                 database.executeStatement(SQLQuery.INSERT_STATUS, player.getUniqueId().toString(), status.getStatus(STATUS_TYPES.HIT_POINT), status.getStatus(STATUS_TYPES.MAGIC_POINT), status.getStatus(STATUS_TYPES.ATTACK), status.getStatus(STATUS_TYPES.DEFENSE), status.getStatus(STATUS_TYPES.AGILITY));
             }
+            StatusEffect effect = new StatusEffect(player);
+            effect.reloadEffects(status);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
