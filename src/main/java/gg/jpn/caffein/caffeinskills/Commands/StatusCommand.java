@@ -56,13 +56,15 @@ public class StatusCommand implements CommandExecutor {
                         player = (Player) sender;
                         status = statusAPI.getStatus(player);
                         sender.sendMessage(announceStatus(statusAPI.getStatus(player)));
+                        player.sendMessage(ChatColor.AQUA + "SERVER: THIS IS " + player.getName() + "'s STATUS.");
                     } else {
                         return false;
                     }
                 } else {
-                    player = Bukkit.getPlayer(args[0]);
+                    player = Bukkit.getPlayer(args[1]);
                     if (player == null) return false;
                     status = statusAPI.getStatus(player);
+                    player.sendMessage(ChatColor.AQUA + "SERVER: THIS IS " + player.getName() + "'s STATUS.");
                     sender.sendMessage(announceStatus(status));
                     return true;
                 }
