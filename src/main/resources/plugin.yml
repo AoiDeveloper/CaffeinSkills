@@ -1,0 +1,6 @@
+name: CaffeinSkills
+version: '${project.version}'
+main: gg.jpn.caffein.caffeinskills.CaffeinSkills
+api-version: 1.17
+commands:
+  status:
